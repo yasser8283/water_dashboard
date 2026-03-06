@@ -3,6 +3,6 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
-  base: "https://github.com/yasser8283/water_dashboard.git",
+  base: "/water_dashboard/",
   plugins: [react(),tailwindcss()],
 })
