@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/yasser8283/water_dashboard.git",
+  "homepage": "https://github.com/yasser8283/water_dashboard",
   "scripts": {
     "predeploy" : "npm run build",
     "deploy" : "gh-pages -d dist",
