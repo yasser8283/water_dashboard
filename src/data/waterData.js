@@ -26,6 +26,7 @@ const generateWaterData = () => {
         date,
         location: loc,
         ph: randomVariation(base.ph, 0.4),
+        ph_info: "pH in drinking watermeasures its acidity or alkalinity on a scale of 0 to 14, where 7 is neutral, lower values ​​are acidic, and higher are alkaline (basic). It indicates the concentration of hydrogen ions, with a target range of 6.5–8.5 for safe drinking water, affecting taste and pipe corrosion",
         turbidity: randomVariation(base.turbidity, 0.8),
         oxygen: randomVariation(base.oxygen, 0.6),
         temperature: Math.round(randomVariation(base.temperature, 2)),

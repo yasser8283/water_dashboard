@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactECharts from "echarts-for-react"
-const LineChart = ({ resultData, linemetric, setlinemetric }) => {
+const LineChart = ({ resultData,linemetric}) => {
     const date = resultData.map(elem => elem.date)
     const data = resultData.map(elem => elem[linemetric])
     const option = {
@@ -30,17 +30,10 @@ const LineChart = ({ resultData, linemetric, setlinemetric }) => {
     };
     return (
         <div>
-            <div className= ' bg-white border shadow-md shadow-mauve-500 border-black rounded-lg px-5 py-5' style={{width:"100%"}}>
+            <div>
                 <h1 className= 'capitalize'>{linemetric} Trend Overtime</h1>
-                <select value = {linemetric} onChange={(e)=>{
-                    setlinemetric(e.target.value)
-                }} name="" id="">
-                    <option value="tds">TDS</option>
-                    <option value="turbidity">Turbidity</option>
-                    <option value="ph">pH</option>
-                    <option value="temperature">Temperature</option>
-                </select>
-                <ReactECharts option={option} style={{ height: 280 }} />
+               
+                <ReactECharts option={option} style={{ height: 250 }} />
 
             </div>
         </div>

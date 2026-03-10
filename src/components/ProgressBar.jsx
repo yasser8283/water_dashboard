@@ -1,6 +1,6 @@
 import React from 'react'
 import { waterRules } from '../utils/waterRules';
-const ProgressBar = ({ barValue, barMetric }) => {
+const ProgressBar = ({ barValue, barMetric,unit }) => {
     const rule = waterRules[barMetric]
     const percentage = (barValue / rule.max) * 100;
     const color = rule.getColor(barValue)
