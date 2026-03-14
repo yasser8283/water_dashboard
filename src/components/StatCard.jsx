@@ -15,7 +15,7 @@ const StatCard = (props) => {
 
       <div className='h-70 lg:h-70 w-full bg-slate-700 border-slate-600 rounded-lg shadow-md px-5 py-2 overflow-auto'>
         <div className='flex justify-between'>
-          <h1 className='font-semibold'>{props.title}</h1>
+          <h1 className='font-semibold text-xl'>{props.title}</h1>
 
           <button className='cursor-pointer' onClick={() => {
             setview("progress")

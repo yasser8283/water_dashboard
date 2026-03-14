@@ -7,6 +7,8 @@ import LineChart from '../components/LineChart';
 import { useState } from 'react'
 import DataTable from '../components/DataTable';
 import LocMap from '../components/LocMap';
+import SummaryCard from '../components/SummaryCard';
+import OtherMetric from '../components/OtherMetric';
 
 const Dashboard = ({ location }) => {
   const resultData = useFilterData(location);
@@ -28,6 +30,8 @@ const Dashboard = ({ location }) => {
       <StatCard title={"Oxygen"} value={avgResult.avgOxygen} unit={"mg/L"} metric={"oxygen"} resultData={resultData} linemetric='oxygen' info={oxyInfo} bar={true} />
       <StatCard title={"Pressure"} value={avgResult.avgPressure} unit={"psi"} metric={"pressure"} resultData={resultData} linemetric='pressure' info={presInfo} bar={false} />
       <TempGauge value={avgResult.avgTemperature} />
+      <SummaryCard />
+      <OtherMetric salinityvalue= {avgResult.avgSalinity} resistivityvalue= {avgResult.avgResistivity} />
       <DataTable data={resultData} />
     </div>
   )

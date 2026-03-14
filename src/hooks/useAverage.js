@@ -6,6 +6,8 @@ export const useAverage = (data) => {
         acc.temperature += elem.temperature
         acc.tds += elem.tds
         acc.pressure = elem.pressure
+        acc.salinity = elem.salinity
+        acc.resistivity = elem.resistivity
         return acc;
     }, {
         ph: 0,
@@ -21,6 +23,8 @@ export const useAverage = (data) => {
         avgOxygen: (total.oxygen/count).toFixed(2),
         avgTemperature: (total.temperature/count).toFixed(2),
         avgTds: (total.tds/count).toFixed(2),
-        avgPressure : (total.pressure/count).toFixed(2)
+        avgPressure : (total.pressure).toFixed(2),
+        avgSalinity : (total.salinity).toFixed(2),
+        avgResistivity : (total.resistivity).toFixed(2)
     }
 }
