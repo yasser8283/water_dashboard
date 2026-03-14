@@ -23,7 +23,7 @@ const DataTable = ({ data }) => {
   };
 
   return (
-    <div className="px-5 py-5 w-75 col-span-1 lg:w-full rounded-lg lg:col-span-2 shadow bg-slate-700">
+    <div className="px-5 py-5 w-75 col-span-1 lg:w-full rounded-lg lg:col-span-3 shadow bg-slate-700">
       <h3 className="font-semibold">Water Quality Records</h3>
 
       <div style={{ overflowX: "auto" }}>
