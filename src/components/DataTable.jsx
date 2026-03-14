@@ -23,18 +23,18 @@ const DataTable = ({ data }) => {
   };
 
   return (
-    <div className="" style={{ marginTop: "30px" }}>
-      <h3>Water Quality Records</h3>
+    <div className="px-5 py-5 w-75 lg:w-full rounded-lg lg:col-span-2 shadow bg-slate-700">
+      <h3 className="font-semibold">Water Quality Records</h3>
 
       <div style={{ overflowX: "auto" }}>
         <table
           style={{
             width: "100%",
             borderCollapse: "collapse",
-            textAlign: "center"
+            textAlign: "center",
           }}
         >
-          <thead style={{ background: "#f3f4f6" }}>
+          <thead style={{  }}>
             <tr>
               <th>Date</th>
               <th>Location</th>
@@ -71,7 +71,7 @@ const DataTable = ({ data }) => {
           gap: "10px"
         }}
       >
-        <button onClick={prevPage}>
+        <button className="cursor-pointer" onClick={prevPage}>
           Previous
         </button>
 
@@ -79,7 +79,7 @@ const DataTable = ({ data }) => {
           Page {currentPage} of {totalPages}
         </span>
 
-        <button onClick={nextPage} >
+        <button className="cursor-pointer" onClick={nextPage} >
           Next
         </button>
       </div>

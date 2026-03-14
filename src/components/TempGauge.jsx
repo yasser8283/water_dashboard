@@ -4,7 +4,7 @@ import { color } from 'echarts';
 const TempGauge = ({ value }) => {
     const getTempColor = (value) => {
         if (value <= 15) return "#3b82f6";
-        if (value <= 30) return "darkgreen";
+        if (value <= 30) return "limegreen";
         if (value <= 45) return "#f97316";
         return "#ef4444";
     };
@@ -88,7 +88,7 @@ const TempGauge = ({ value }) => {
     };
     return (
         <div>
-            <div className='bg-white border px-5 py-5 rounded-lg shadow-xs shadow-black w-100'>
+            <div className='bg-slate-700 w-75  px-5 py-5 rounded-lg shadow-md h-95 lg:w-full overflow-auto'>
                 <h1 className='font-semibold'>Temperature</h1>
                 <ReactECharts option={option} style={{ height: 300 }} />
             </div>

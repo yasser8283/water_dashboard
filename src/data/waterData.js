@@ -1,11 +1,11 @@
-const locations = ["Karwar", "Mangaluru", "Hubli", "Belagavi", "Mysuru"];
+const locations = ["Karwar", "Dandeli", "Hubli", "Belagavi", "Sirsi"];
 
 const baseValues = {
-  Karwar: { ph: 7.3, turbidity: 2.2, oxygen: 7.0, temperature: 26, tds: 420 },
-  Mangaluru: { ph: 7.1, turbidity: 3.4, oxygen: 6.5, temperature: 28, tds: 450 },
-  Hubli: { ph: 7.4, turbidity: 2.4, oxygen: 6.9, temperature: 27, tds: 405 },
-  Belagavi: { ph: 6.6, turbidity: 4.6, oxygen: 5.5, temperature: 24, tds: 500 },
-  Mysuru: { ph: 7.2, turbidity: 3.2, oxygen: 6.3, temperature: 26, tds: 465 }
+  Karwar: { ph: 7.3, turbidity: 2.2, oxygen: 7.0, temperature: 26, tds: 400, pressure: 42 },
+  Dandeli: { ph: 7.1, turbidity: 3.4, oxygen: 6.5, temperature: 23, tds: 450, pressure: 52 },
+  Hubli: { ph: 7.4, turbidity: 2.4, oxygen: 6.9, temperature: 22, tds: 405, pressure: 55 },
+  Belagavi: { ph: 7.3, turbidity: 4.6, oxygen: 7.5, temperature: 24, tds: 500, pressure: 50 },
+  Sirsi: { ph: 7.2, turbidity: 3.2, oxygen: 6.3, temperature: 20, tds: 465, pressure: 57 }
 };
 
 const randomVariation = (value, range) =>
@@ -26,11 +26,11 @@ const generateWaterData = () => {
         date,
         location: loc,
         ph: randomVariation(base.ph, 0.4),
-        ph_info: "pH in drinking watermeasures its acidity or alkalinity on a scale of 0 to 14, where 7 is neutral, lower values ​​are acidic, and higher are alkaline (basic). It indicates the concentration of hydrogen ions, with a target range of 6.5–8.5 for safe drinking water, affecting taste and pipe corrosion",
         turbidity: randomVariation(base.turbidity, 0.8),
         oxygen: randomVariation(base.oxygen, 0.6),
         temperature: Math.round(randomVariation(base.temperature, 2)),
-        tds: Math.round(randomVariation(base.tds, 40))
+        tds: Math.round(randomVariation(base.tds, 40)),
+        pressure: randomVariation(base.pressure, 2.5)
       });
     });
   }

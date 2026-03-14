@@ -3,7 +3,7 @@ import ProgressBar from './ProgressBar'
 import { useState } from 'react'
 import LineChart from './LineChart'
 import MetricTable from './MetricTable'
-import MetricInfo from './MetricInfo'
+
 import { Percent } from 'lucide-react'
 import { ChartLine } from "lucide-react";
 import { Table } from 'lucide-react'
@@ -13,7 +13,7 @@ const StatCard = (props) => {
   return (
     <div>
 
-      <div className='h-70 w-100 bg-white border rounded-lg shadow-xs shadow-black px-5 py-2'>
+      <div className='h-70 lg:h-70 w-full bg-slate-700 border-slate-600 rounded-lg shadow-md px-5 py-2 overflow-auto'>
         <div className='flex justify-between'>
           <h1 className='font-semibold'>{props.title}</h1>
 
@@ -26,7 +26,7 @@ const StatCard = (props) => {
           <button className='cursor-pointer' onClick={() => {
             setview('table')
           }}><Table size={15} /></button>
-          <button className='cursor-pointer' onClick={()=>{
+          <button className='cursor-pointer' onClick={() => {
             setview('info')
           }}>
             <Info size={15} />
@@ -34,8 +34,17 @@ const StatCard = (props) => {
         </div>
         {view === "progress" && (
           <>
-            <h2 className='font-semibold px-3 py-3'>{props.value} <span>{props.unit}</span></h2>
-            <ProgressBar barValue={props.value} barMetric={props.metric} />
+            {props.title === "Pressure" && (
+             <div className='flex justify-center items-center h-50'>
+              <h1 className='text-4xl font-bold'>{props.value} <span>{props.unit}</span></h1>
+              </div>
+            )}
+            {props.title != "Pressure" && (
+              <h2 className='font-semibold px-3 py-3'><span className='text-2xl'>{props.value}</span> <span>{props.unit}</span></h2>)}
+
+            {props.bar && (
+              <ProgressBar barValue={props.value} barMetric={props.metric} />
+            )}
           </>
         )}
         {view === "line" && (
@@ -49,9 +58,7 @@ const StatCard = (props) => {
           </>
         )}
         {view === "info" && (
-          <>
-            <MetricInfo resultData={props.resultData} info={props.info} />
-          </>
+          <div className="px-2 py-2">{props.info}</div>
         )}
 
       </div>

@@ -20,7 +20,7 @@ const MetricTable = ({ resultData, linemetric }) => {
       {/* Scrollable table area */}
       <div className="flex-1 overflow-y-auto border rounded">
         <table className="w-full text-center text-sm">
-          <thead className="bg-gray-100 sticky top-0">
+          <thead className= "">
             <tr>
               <th className="border p-2">Date</th>
               <th className="border p-2 capitalize">{linemetric}</th>

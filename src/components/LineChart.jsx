@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactECharts from "echarts-for-react"
+import { color } from 'echarts'
 const LineChart = ({ resultData,linemetric}) => {
     const date = resultData.map(elem => elem.date)
     const data = resultData.map(elem => elem[linemetric])
@@ -10,13 +11,17 @@ const LineChart = ({ resultData,linemetric}) => {
         xAxis: {
             type: 'category',
             data: date,
-            color : "black",
-            xlabel : "Dates"
+            xlabel : "Dates",
+            axisLabel:{
+                color:"white"
+            }
         },
         yAxis: {
             type: 'value',
             min : 0,
-            color :  "black"
+            axisLabel:{
+                color: "white"
+            }
         },
         series: [
             {
@@ -24,7 +29,7 @@ const LineChart = ({ resultData,linemetric}) => {
                 data: data,
                 type: 'line',
                 smooth: true,
-                color : "green"
+                color : "cyan"
             }
         ]
     };
@@ -33,7 +38,7 @@ const LineChart = ({ resultData,linemetric}) => {
             <div>
                 <h1 className= 'capitalize'>{linemetric} Trend Overtime</h1>
                
-                <ReactECharts option={option} style={{ height: 250 }} />
+                <ReactECharts option={option} style={{ height: 270 }} />
 
             </div>
         </div>
