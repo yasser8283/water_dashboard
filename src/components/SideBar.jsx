@@ -44,6 +44,7 @@ const SideBar = ({ setlocation,location }) => {
                 }}>Belagavi</button>
                 <button className='w-full h-10 hover:bg-slate-300 hover:text-black rounded-2xl'onClick={()=>{
                     setlocation("Sirsi")
+                    setexpanded(false)
                 }}>Sirsi</button>
 
             </div>
