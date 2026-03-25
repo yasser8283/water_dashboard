@@ -19,9 +19,9 @@ const StatCard = (props) => {
   ];
 
   return (
-    <article className='w-full bg-slate-700 border border-slate-600 rounded-2xl shadow-lg transition hover:-translate-y-0.5 hover:shadow-2xl overflow-hidden'>
-      <header className='px-4 py-3 flex items-center justify-between'>
-        <h1 className='font-semibold text-lg'>{props.title}</h1>
+    <article className='w-full bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:border-cyan-500/30 overflow-hidden'>
+      <header className='px-5 py-4 flex items-center justify-between bg-slate-800/50'>
+        <h1 className='font-semibold text-lg text-slate-100'>{props.title}</h1>
         <div className='flex gap-2'>
           {chartButtons.map((btn) => {
             const IconComp = btn.icon;
@@ -30,7 +30,7 @@ const StatCard = (props) => {
               <button
                 key={btn.id}
                 aria-label={btn.label}
-                className={`p-1 rounded ${isActive ? 'bg-cyan-500 text-slate-950' : 'text-slate-300 hover:text-white'} transition`}
+                className={`p-2 rounded-lg transition-all duration-200 ${isActive ? 'bg-cyan-500 text-slate-950 shadow-lg' : 'text-slate-400 hover:text-cyan-400 hover:bg-slate-700'}`}
                 onClick={() => setview(btn.id)}
               >
                 <IconComp size={18} />
@@ -40,15 +40,15 @@ const StatCard = (props) => {
         </div>
       </header>
 
-      <div className='px-4 pb-4'>
+      <div className='px-5 pb-5'>
         {view === 'progress' && (
           <>
             {props.title === 'Pressure' ? (
-              <div className='flex justify-center items-center h-28'>
-                <h2 className='text-4xl font-bold'>{props.value} <span className='text-lg'>{props.unit}</span></h2>
+              <div className='flex justify-center items-center h-32'>
+                <h2 className='text-5xl font-bold text-cyan-400'>{props.value} <span className='text-2xl text-slate-300'>{props.unit}</span></h2>
               </div>
             ) : (
-              <h2 className='text-3xl font-bold mb-2'>{props.value} <span className='text-base'>{props.unit}</span></h2>
+              <h2 className='text-4xl font-bold mb-3 text-white'>{props.value} <span className='text-xl text-slate-300'>{props.unit}</span></h2>
             )}
 
             {props.bar && <ProgressBar barValue={props.value} barMetric={props.metric} />}
@@ -57,7 +57,7 @@ const StatCard = (props) => {
 
         {view === 'line' && <LineChart resultData={props.resultData} linemetric={props.linemetric} />}
         {view === 'table' && <MetricTable resultData={props.resultData} linemetric={props.linemetric} />}
-        {view === 'info' && <p className='text-sm leading-relaxed text-slate-300'>{props.info}</p>}
+        {view === 'info' && <p className='text-sm leading-relaxed text-slate-300 bg-slate-800/50 p-3 rounded-lg'>{props.info}</p>}
       </div>
     </article>
   );

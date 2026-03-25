@@ -88,9 +88,11 @@ const TempGauge = ({ value }) => {
     };
     return (
         <div>
-            <div className='bg-slate-700   px-5 py-5 rounded-lg shadow-md h-95 w-full overflow-auto'>
-                <h1 className='font-semibold text-xl'>Temperature</h1>
-                <ReactECharts option={option} style={{ height: 300 }} />
+            <div className='bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:border-cyan-500/30 overflow-hidden px-4 py-4 h-[300px] w-full'>
+                <h1 className='font-semibold text-lg mb-3 text-slate-100'>Temperature</h1>
+                <div className='h-[220px]'>
+                    <ReactECharts option={option} style={{ height: '100%', width: '100%' }} />
+                </div>
             </div>
         </div>
     )

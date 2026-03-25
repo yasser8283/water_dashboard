@@ -23,35 +23,35 @@ const DataTable = ({ data }) => {
   };
 
   return (
-    <section className="px-5 py-5 w-full lg:col-span-3 rounded-lg shadow-lg bg-slate-800 border border-slate-700">
+    <section className="px-5 py-5 w-full lg:col-span-3 rounded-2xl shadow-xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold">Water Quality Records</h3>
-        <span className='text-sm text-slate-400'>Showing {currentRows.length} of {data.length}</span>
+        <h3 className="text-lg font-semibold text-slate-100">Water Quality Records</h3>
+        <span className='text-sm text-slate-400 bg-slate-700/50 px-2 py-1 rounded-full'>Showing {currentRows.length} of {data.length}</span>
       </div>
 
-      <div className='overflow-x-auto rounded-lg border border-slate-700'>
+      <div className='overflow-x-auto rounded-lg border border-slate-700/50'>
         <table className='w-full text-sm text-left text-slate-100'>
-          <thead className='bg-slate-900 text-slate-300'>
+          <thead className='bg-gradient-to-r from-slate-900 to-slate-800 text-slate-300'>
             <tr className='text-xs uppercase tracking-wider'>
-              <th className='px-3 py-2'>Date</th>
-              <th className='px-3 py-2'>Location</th>
-              <th className='px-3 py-2'>pH</th>
-              <th className='px-3 py-2'>Turbidity</th>
-              <th className='px-3 py-2'>Oxygen</th>
-              <th className='px-3 py-2'>Temperature (°C)</th>
-              <th className='px-3 py-2'>TDS</th>
+              <th className='px-4 py-3'>Date</th>
+              <th className='px-4 py-3'>Location</th>
+              <th className='px-4 py-3'>pH</th>
+              <th className='px-4 py-3'>Turbidity</th>
+              <th className='px-4 py-3'>Oxygen</th>
+              <th className='px-4 py-3'>Temperature (°C)</th>
+              <th className='px-4 py-3'>TDS</th>
             </tr>
           </thead>
           <tbody>
             {currentRows.map((row, index) => (
-              <tr key={index} className='border-b border-slate-700 hover:bg-slate-700 transition'>
-                <td className='px-3 py-2'>{row.date}</td>
-                <td className='px-3 py-2'>{row.location}</td>
-                <td className='px-3 py-2'>{row.ph}</td>
-                <td className='px-3 py-2'>{row.turbidity}</td>
-                <td className='px-3 py-2'>{row.oxygen}</td>
-                <td className='px-3 py-2'>{row.temperature}</td>
-                <td className='px-3 py-2'>{row.tds}</td>
+              <tr key={index} className='border-b border-slate-700/50 hover:bg-slate-700/30 transition-colors'>
+                <td className='px-4 py-3'>{row.date}</td>
+                <td className='px-4 py-3'>{row.location}</td>
+                <td className='px-4 py-3'>{row.ph}</td>
+                <td className='px-4 py-3'>{row.turbidity}</td>
+                <td className='px-4 py-3'>{row.oxygen}</td>
+                <td className='px-4 py-3'>{row.temperature}</td>
+                <td className='px-4 py-3'>{row.tds}</td>
               </tr>
             ))}
           </tbody>
@@ -60,17 +60,17 @@ const DataTable = ({ data }) => {
 
       <div className='mt-4 flex items-center justify-center gap-3'>
         <button
-          className='px-3 py-1 rounded bg-slate-700 hover:bg-slate-600 disabled:opacity-50'
+          className='px-4 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed text-slate-300 hover:text-white transition-all duration-200'
           onClick={prevPage}
           disabled={currentPage === 1}
         >
           Previous
         </button>
 
-        <span className='text-sm text-slate-300'>Page {currentPage} of {totalPages}</span>
+        <span className='text-sm text-slate-300 bg-slate-700/50 px-3 py-2 rounded-lg'>Page {currentPage} of {totalPages}</span>
 
         <button
-          className='px-3 py-1 rounded bg-slate-700 hover:bg-slate-600 disabled:opacity-50'
+          className='px-4 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed text-slate-300 hover:text-white transition-all duration-200'
           onClick={nextPage}
           disabled={currentPage === totalPages}
         >
