@@ -9,61 +9,58 @@ import { ChartLine } from "lucide-react";
 import { Table } from 'lucide-react'
 import { Info } from "lucide-react";
 const StatCard = (props) => {
-  const [view, setview] = useState('progress')
+  const [view, setview] = useState('progress');
+
+  const chartButtons = [
+    { id: 'progress', icon: Percent, label: 'Progress' },
+    { id: 'line', icon: ChartLine, label: 'Trend' },
+    { id: 'table', icon: Table, label: 'Table' },
+    { id: 'info', icon: Info, label: 'Info' },
+  ];
+
   return (
-    <div>
-
-      <div className='h-70 lg:h-70 w-full bg-slate-700 border-slate-600 rounded-lg shadow-md px-5 py-2 overflow-auto'>
-        <div className='flex justify-between'>
-          <h1 className='font-semibold text-xl'>{props.title}</h1>
-
-          <button className='cursor-pointer' onClick={() => {
-            setview("progress")
-          }}><Percent size={15} /></button>
-          <button className='cursor-pointer' onClick={() => {
-            setview('line')
-          }}><ChartLine size={15} /></button>
-          <button className='cursor-pointer' onClick={() => {
-            setview('table')
-          }}><Table size={15} /></button>
-          <button className='cursor-pointer' onClick={() => {
-            setview('info')
-          }}>
-            <Info size={15} />
-          </button>
+    <article className='w-full bg-slate-700 border border-slate-600 rounded-2xl shadow-lg transition hover:-translate-y-0.5 hover:shadow-2xl overflow-hidden'>
+      <header className='px-4 py-3 flex items-center justify-between'>
+        <h1 className='font-semibold text-lg'>{props.title}</h1>
+        <div className='flex gap-2'>
+          {chartButtons.map((btn) => {
+            const IconComp = btn.icon;
+            const isActive = view === btn.id;
+            return (
+              <button
+                key={btn.id}
+                aria-label={btn.label}
+                className={`p-1 rounded ${isActive ? 'bg-cyan-500 text-slate-950' : 'text-slate-300 hover:text-white'} transition`}
+                onClick={() => setview(btn.id)}
+              >
+                <IconComp size={18} />
+              </button>
+            );
+          })}
         </div>
-        {view === "progress" && (
+      </header>
+
+      <div className='px-4 pb-4'>
+        {view === 'progress' && (
           <>
-            {props.title === "Pressure" && (
-             <div className='flex justify-center items-center h-50'>
-              <h1 className='text-4xl font-bold'>{props.value} <span>{props.unit}</span></h1>
+            {props.title === 'Pressure' ? (
+              <div className='flex justify-center items-center h-28'>
+                <h2 className='text-4xl font-bold'>{props.value} <span className='text-lg'>{props.unit}</span></h2>
               </div>
+            ) : (
+              <h2 className='text-3xl font-bold mb-2'>{props.value} <span className='text-base'>{props.unit}</span></h2>
             )}
-            {props.title != "Pressure" && (
-              <h2 className='font-semibold px-3 py-3'><span className='text-2xl'>{props.value}</span> <span>{props.unit}</span></h2>)}
 
-            {props.bar && (
-              <ProgressBar barValue={props.value} barMetric={props.metric} />
-            )}
+            {props.bar && <ProgressBar barValue={props.value} barMetric={props.metric} />}
           </>
-        )}
-        {view === "line" && (
-          <>
-            <LineChart resultData={props.resultData} linemetric={props.linemetric} />
-          </>
-        )}
-        {view === "table" && (
-          <>
-            <MetricTable resultData={props.resultData} linemetric={props.linemetric} />
-          </>
-        )}
-        {view === "info" && (
-          <div className="px-2 py-2">{props.info}</div>
         )}
 
+        {view === 'line' && <LineChart resultData={props.resultData} linemetric={props.linemetric} />}
+        {view === 'table' && <MetricTable resultData={props.resultData} linemetric={props.linemetric} />}
+        {view === 'info' && <p className='text-sm leading-relaxed text-slate-300'>{props.info}</p>}
       </div>
-    </div>
-  )
-}
+    </article>
+  );
+};
 
 export default StatCard

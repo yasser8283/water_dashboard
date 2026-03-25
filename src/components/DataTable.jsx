@@ -23,67 +23,61 @@ const DataTable = ({ data }) => {
   };
 
   return (
-    <div className="px-5 py-5 w-75 col-span-1 lg:w-full rounded-lg lg:col-span-3 shadow bg-slate-700">
-      <h3 className="font-semibold">Water Quality Records</h3>
+    <section className="px-5 py-5 w-full lg:col-span-3 rounded-lg shadow-lg bg-slate-800 border border-slate-700">
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-lg font-semibold">Water Quality Records</h3>
+        <span className='text-sm text-slate-400'>Showing {currentRows.length} of {data.length}</span>
+      </div>
 
-      <div style={{ overflowX: "auto" }}>
-        <table
-          style={{
-            width: "100%",
-            borderCollapse: "collapse",
-            textAlign: "center",
-          }}
-        >
-          <thead style={{  }}>
-            <tr>
-              <th>Date</th>
-              <th>Location</th>
-              <th>pH</th>
-              <th>Turbidity</th>
-              <th>Oxygen</th>
-              <th>Temperature (°C)</th>
-              <th>TDS</th>
+      <div className='overflow-x-auto rounded-lg border border-slate-700'>
+        <table className='w-full text-sm text-left text-slate-100'>
+          <thead className='bg-slate-900 text-slate-300'>
+            <tr className='text-xs uppercase tracking-wider'>
+              <th className='px-3 py-2'>Date</th>
+              <th className='px-3 py-2'>Location</th>
+              <th className='px-3 py-2'>pH</th>
+              <th className='px-3 py-2'>Turbidity</th>
+              <th className='px-3 py-2'>Oxygen</th>
+              <th className='px-3 py-2'>Temperature (°C)</th>
+              <th className='px-3 py-2'>TDS</th>
             </tr>
           </thead>
-
           <tbody>
             {currentRows.map((row, index) => (
-              <tr key={index}>
-                <td>{row.date}</td>
-                <td>{row.location}</td>
-                <td>{row.ph}</td>
-                <td>{row.turbidity}</td>
-                <td>{row.oxygen}</td>
-                <td>{row.temperature}</td>
-                <td>{row.tds}</td>
+              <tr key={index} className='border-b border-slate-700 hover:bg-slate-700 transition'>
+                <td className='px-3 py-2'>{row.date}</td>
+                <td className='px-3 py-2'>{row.location}</td>
+                <td className='px-3 py-2'>{row.ph}</td>
+                <td className='px-3 py-2'>{row.turbidity}</td>
+                <td className='px-3 py-2'>{row.oxygen}</td>
+                <td className='px-3 py-2'>{row.temperature}</td>
+                <td className='px-3 py-2'>{row.tds}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
 
-      {/* Pagination Controls */}
-      <div
-        style={{
-          marginTop: "15px",
-          display: "flex",
-          justifyContent: "center",
-          gap: "10px"
-        }}
-      >
-        <button className="cursor-pointer" onClick={prevPage}>
+      <div className='mt-4 flex items-center justify-center gap-3'>
+        <button
+          className='px-3 py-1 rounded bg-slate-700 hover:bg-slate-600 disabled:opacity-50'
+          onClick={prevPage}
+          disabled={currentPage === 1}
+        >
           Previous
         </button>
 
-        <span>
-          Page {currentPage} of {totalPages}
-        </span>
+        <span className='text-sm text-slate-300'>Page {currentPage} of {totalPages}</span>
 
-        <button className="cursor-pointer" onClick={nextPage} >
+        <button
+          className='px-3 py-1 rounded bg-slate-700 hover:bg-slate-600 disabled:opacity-50'
+          onClick={nextPage}
+          disabled={currentPage === totalPages}
+        >
           Next
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 

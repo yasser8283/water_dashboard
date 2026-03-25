@@ -7,12 +7,12 @@ import LocMap from './components/LocMap'
 const App = () => {
     const [location, setlocation] = useState("Belagavi")
   return (
-    <div>
-      <Navbar/>
-    <div className='flex w-full'>
-     <SideBar location = {location} setlocation = {setlocation} />
-      <Dashboard location = {location} />
-    </div>
+    <div className='min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-slate-100'>
+      <Navbar />
+      <div className='flex w-full'>
+        <SideBar location={location} setlocation={setlocation} />
+        <Dashboard location={location} />
+      </div>
     </div>
   )
 }

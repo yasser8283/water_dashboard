@@ -56,7 +56,7 @@ const TempGauge = ({ value }) => {
                 axisLabel: {
                     distance: -20,
                     color: color,
-                    fontSize: 20
+                    fontSize: 10
                 },
                 anchor: {
                     show: false
@@ -66,7 +66,7 @@ const TempGauge = ({ value }) => {
                 },
                 detail: {
                     valueAnimation: true,
-                    width: '30%',
+                    width: '10%',
                     lineHeight: 20,
                     borderRadius: 8,
                     offsetCenter: [0, '-15%'],
